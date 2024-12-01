@@ -9,10 +9,12 @@
 </template> 
 
 <script>
+import Header from "@/components/Header.vue";
 import Footer from "@/components/Footer.vue";
 
 export default {
   components: {
+    Header,
     Footer
   }
 };
@@ -42,6 +44,9 @@ main {
   padding: 1rem;
   background-color: #ffffff;
 }
+Header {
+  position: sticky;
+  top: 0;
 }
 
 Footer {
