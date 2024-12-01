@@ -28,7 +28,7 @@ export default {
 
 body{
     font-family: 'GeosansLight', sans-serif;
-    margin: 0 15%;
+    margin: 0 20%;
     background-color: #ededed;
 }
 /* Global styles */
@@ -48,4 +48,25 @@ Footer {
   position: sticky;
   bottom: 0;
 }
+
+@media (max-width: 1200px) {
+  body {
+    margin: 0 15%;
+  }
+
+}
+
+@media (max-width: 992px) {
+  body {
+    margin: 0 10%;
+  }
+}
+
+@media (max-width: 768px) {
+  body {
+    margin: 0 2%;
+  }
+
+}
+
 </style>
