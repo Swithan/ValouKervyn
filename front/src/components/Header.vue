@@ -35,29 +35,27 @@
         <button @click="changeLanguage('nl')">NL</button>
       </div>
     </div>
-    <nav class="nav-burger" v-if="burger">
-      <ul class="burger">
-        <li><router-link to="/">Home</router-link></li>
-        <li
-          class="dropdown"
-          @mouseover="showDropdown = true"
-          @mouseleave="showDropdown = false"
-        >
-          <router-link>Paintings</router-link>
-          <ul v-if="showDropdown" class="dropdown-burger">
-            <li v-for="category in categories" v-bind:key="category">
-              <router-link :to="{path:category.route}">{{category.name}}</router-link>
-            </li> 
-          </ul>
+      <nav class="nav-burger">
+        <ul class="burger" v-if="burger">
+          <li><router-link to="/" @click="burger = !burger">Home</router-link></li>
+          <li class="dropdown">
+            <router-link>Paintings</router-link>
+            <ul class="dropdown-burger">
+              <li v-for="category in categories" v-bind:key="category">
+                <router-link :to="{path:category.route}" @click="burger = !burger">{{category.name}}</router-link>
+              </li> 
+            </ul>
+          </li>
+          <li><router-link to="/presentation" @click="burger = !burger">Presentation</router-link></li>
+          <li><router-link to="/events" @click="burger = !burger">Events</router-link></li>
+          <li><router-link to="/contact" @click="burger = !burger">Contact</router-link></li>
+          <li>
+            <div class="language-burger">
+              <button @click="changeLanguage('en')">EN</button>
+              <button @click="changeLanguage('fr')">FR</button>
+              <button @click="changeLanguage('nl')">NL</button>
+            </div>
         </li>
-        <li><router-link to="/presentation">Presentation</router-link></li>
-        <li><router-link to="/events">Events</router-link></li>
-        <li><router-link to="/contact">Contact</router-link></li>
-        <div class="language-burger">
-          <button @click="changeLanguage('en')">EN</button>
-          <button @click="changeLanguage('fr')">FR</button>
-          <button @click="changeLanguage('nl')">NL</button>
-        </div>
       </ul>
     </nav>
   <hr class="header-divider" />
@@ -103,11 +101,6 @@ header {
 
 .burger-btn {
   display: none;
-}
-.nav-burger {
-  display: none;
-  top: -10rem;
-  transition: top ease 0.3s;
 }
 
 /* Menu styling */
@@ -161,8 +154,6 @@ header {
   z-index: 10;
   padding: 0;
   min-width: 115px;
-  opacity: 1;
-  transition: opacity 0.5s ease;
 }
 
 .dropdown-menu a {
@@ -235,7 +226,7 @@ header .header-divider {
     display: block;
     border: none;
     padding: 0.2rem 0;
-    transition: background-color ease-in-out 0.2s;
+    transition: all ease-in-out 0.2s;
   }
 
   .burger-btn hr {
@@ -248,44 +239,63 @@ header .header-divider {
   .open {
     background-color: #ededed;
   }
-  
+
+  .open hr {
+    border: 1px solid #000000;
+  }
   .nav-burger {
-    top: 0;
     display: block;
-    transition: top ease-in-out 0.5s;
+    overflow: hidden;
   }
 
   .burger {
     margin: 0;
     padding: 0.5rem;
+    transform-origin: top;
+    transition: transform .4s ease-in-out;
   }
+
   .burger li {
     list-style: none;
+    padding: 0.1rem 0.2rem;
   }
+
   .burger a {
     text-decoration: none;
     color: #555555;
     transition: color 0.3s;
+    border-bottom: 1px solid #ffffff;
+    transition: all 0.3s ease-in-out;
   }
-
-  .burger a:hover {
+  .burger a:active {
+    background-color: #ededed;
+    border-bottom: 1px solid #000000;
     color: #000000;
   }
 
-  .burger a::after {
-    content: "";
-    position: absolute;
-    left: 0;
-    bottom: -1px; /* Adjust distance below the text */
-    width: 0; /* Start with no width */
-    height: 1px;
-    background-color: #000000; /* Color of the underline */
-    transition: width 0.2s ease-in-out; /* Smooth animation */
+  .dropdown-burger {
+    padding-left: 0.5rem;
   }
 
-  .burger a:hover::after {
-    width: 100%; /* Full width on hover */
+  .language-burger{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 1rem;
   }
+  .language-burger button {
+    border: none;
+    font-family: 'GeosansLight', sans-serif;
+    padding: 0.2rem 0.1rem;
+    min-width: 25px;
+    background-color: #ffffff;
+    border-bottom: 1px solid #ffffff;
+    transition: all 0.3s ease-in-out;
+  }
+  .language-burger button:active {
+    background-color: #ededed;
+    border-bottom: 1px solid #000000; }
+
 }
 
 @media (max-width: 1800px) {
@@ -295,5 +305,9 @@ header .header-divider {
   .menu {
     gap: 2rem;
   }
+}
+
+.slide-enter, .slide-leave-to{
+  transform: scaleY(0);
 }
 </style>
