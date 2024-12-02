@@ -1,11 +1,42 @@
 <template>
   <header>
     <div class="site-header">
-    <div class="logo">
-      <img src="../assets/VK.jpg" alt="Logo" />
+      <div class="burger-btn" v-bind:class="burger? 'open':''" @click="burger = !burger">
+        <hr>
+        <hr>
+        <hr>
+      </div>
+      <div class="logo">
+        <img src="../assets/VK.jpg" alt="Logo" />
+      </div>
+      <nav class="nav-menu">
+        <ul class="menu">
+          <li><router-link to="/">Home</router-link></li>
+          <li
+            class="dropdown"
+            @mouseover="showDropdown = true"
+            @mouseleave="showDropdown = false"
+          >
+            <router-link>Paintings</router-link>
+            <ul v-if="showDropdown" class="dropdown-menu">
+              <li v-for="category in categories" v-bind:key="category">
+                <router-link :to="{path:category.route}">{{category.name}}</router-link>
+              </li>              
+            </ul>
+          </li>
+          <li><router-link to="/presentation">Presentation</router-link></li>
+          <li><router-link to="/events">Events</router-link></li>
+          <li><router-link to="/contact">Contact</router-link></li>
+        </ul>
+      </nav>
+      <div class="language-selector">
+        <button @click="changeLanguage('en')">EN</button>
+        <button @click="changeLanguage('fr')">FR</button>
+        <button @click="changeLanguage('nl')">NL</button>
+      </div>
     </div>
-    <nav>
-      <ul class="menu">
+    <nav class="nav-burger" v-if="burger">
+      <ul class="burger">
         <li><router-link to="/">Home</router-link></li>
         <li
           class="dropdown"
@@ -13,25 +44,23 @@
           @mouseleave="showDropdown = false"
         >
           <router-link>Paintings</router-link>
-          <ul v-if="showDropdown" class="dropdown-menu">
-            <li><router-link to="/paintings/squaring-up">Squaring Up</router-link></li>
-            <li><router-link to="/paintings/pins-and-needles">Pins & needles</router-link></li>
-            <li><router-link to="/paintings/vibrations">Vibrations</router-link></li>
-            <li><router-link to="/paintings/staging-paintings">Staging Paintings</router-link></li>
+          <ul v-if="showDropdown" class="dropdown-burger">
+            <li v-for="category in categories" v-bind:key="category">
+              <router-link :to="{path:category.route}">{{category.name}}</router-link>
+            </li> 
           </ul>
         </li>
         <li><router-link to="/presentation">Presentation</router-link></li>
         <li><router-link to="/events">Events</router-link></li>
         <li><router-link to="/contact">Contact</router-link></li>
+        <div class="language-burger">
+          <button @click="changeLanguage('en')">EN</button>
+          <button @click="changeLanguage('fr')">FR</button>
+          <button @click="changeLanguage('nl')">NL</button>
+        </div>
       </ul>
     </nav>
-    <div class="language-selector">
-      <button @click="changeLanguage('en')">EN</button>
-      <button @click="changeLanguage('fr')">FR</button>
-      <button @click="changeLanguage('nl')">NL</button>
-    </div>
-  </div>
-    <hr class="header-divider" />
+  <hr class="header-divider" />
 
   </header>
 </template>
@@ -41,6 +70,8 @@ export default {
   data() {
     return {
       showDropdown: false,
+      burger: false,
+      categories: [{name: "Squaring Up", route: "/paintings/squaring_up"}, {name: "Pins & Needles", route: "/paintings/pins_&_needles"}, {name: "Vibrations", route: "/paintings/vibrations"}, {name: "Staging Paintings", route: "/paintings/staging_paintings"}]
     };
   },
   methods: {
@@ -58,6 +89,7 @@ header {
   background-color: #ffffff;
 
 }
+
 .site-header {
   display: flex;
   align-items: center;
@@ -66,7 +98,16 @@ header {
 
 /* Logo styling */
 .logo img {
-  max-height: 100px;
+  max-height: 150px;
+}
+
+.burger-btn {
+  display: none;
+}
+.nav-burger {
+  display: none;
+  top: -10rem;
+  transition: top ease 0.3s;
 }
 
 /* Menu styling */
@@ -75,7 +116,7 @@ header {
   list-style: none;
   padding: 0;
   margin: 0;
-  gap: 2rem; /* Space between menu items */
+  gap: 4rem; /* Space between menu items */
 }
 
 .menu li {
@@ -85,7 +126,6 @@ header {
 .menu a {
   text-decoration: none;
   color: #555555;
-  font-size: 1rem;
   transition: color 0.3s;
   position: relative; /* Needed for pseudo-element positioning */
 }
@@ -126,7 +166,6 @@ header {
 }
 
 .dropdown-menu a {
-  font-size: 0.9rem;
   color: #555555;
   display: block; /* Makes the entire dropdown item clickable */
   padding: 0.2rem 0.5rem;
@@ -150,7 +189,7 @@ header {
   background-color: transparent;
   border: none;
   color: #555555;
-  font-size: 0.85rem;
+  font-size: 0.8rem;
   padding: 0.8rem;
   cursor: pointer;
   border-bottom: 1px solid #ffffff;
@@ -163,7 +202,6 @@ header {
   color: #000000;
   background-color: #ededed;
   border-bottom: 1px solid #000000;
-
 }
 
 header .header-divider {
@@ -176,23 +214,86 @@ header .header-divider {
 
 /* Responsive adjustments */
 @media (max-width: 768px) {
-  .menu {
-    display: none;
-  }
+
 
 }
 
 @media (max-width: 992px) {
-  .menu {
-    display: none;
-  }
+
 
 }
 
 @media (max-width: 1200px) {
-  .menu {
+  .nav-menu {
+    display: none;
+  }
+  .language-selector {
     display: none;
   }
 
+  .burger-btn {
+    display: block;
+    border: none;
+    padding: 0.2rem 0;
+    transition: background-color ease-in-out 0.2s;
+  }
+
+  .burger-btn hr {
+    width: 1.5rem;
+    margin: 0.4rem;
+    border: 1px solid #555555;
+    border-radius: 2rem;
+  }
+
+  .open {
+    background-color: #ededed;
+  }
+  
+  .nav-burger {
+    top: 0;
+    display: block;
+    transition: top ease-in-out 0.5s;
+  }
+
+  .burger {
+    margin: 0;
+    padding: 0.5rem;
+  }
+  .burger li {
+    list-style: none;
+  }
+  .burger a {
+    text-decoration: none;
+    color: #555555;
+    transition: color 0.3s;
+  }
+
+  .burger a:hover {
+    color: #000000;
+  }
+
+  .burger a::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -1px; /* Adjust distance below the text */
+    width: 0; /* Start with no width */
+    height: 1px;
+    background-color: #000000; /* Color of the underline */
+    transition: width 0.2s ease-in-out; /* Smooth animation */
+  }
+
+  .burger a:hover::after {
+    width: 100%; /* Full width on hover */
+  }
+}
+
+@media (max-width: 1800px) {
+  .logo img {
+    max-height: 100px;
+  }
+  .menu {
+    gap: 2rem;
+  }
 }
 </style>
