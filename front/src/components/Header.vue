@@ -30,9 +30,9 @@
         </ul>
       </nav>
       <div class="language-selector">
-        <button @click="changeLanguage('en')">EN</button>
-        <button @click="changeLanguage('fr')">FR</button>
-        <button @click="changeLanguage('nl')">NL</button>
+        <button @click="changeLanguage('en')" v-bind:class="language.current=='en'? 'current':''">EN</button>
+        <button @click="changeLanguage('fr')" v-bind:class="language.current=='fr'? 'current':''">FR</button>
+        <button @click="changeLanguage('nl')" v-bind:class="language.current=='nl'? 'current':''">NL</button>
       </div>
     </div>
       <nav class="nav-burger">
@@ -51,9 +51,9 @@
           <li><router-link to="/contact" @click="burger = !burger">Contact</router-link></li>
           <li>
             <div class="language-burger">
-              <button @click="changeLanguage('en')">EN</button>
-              <button @click="changeLanguage('fr')">FR</button>
-              <button @click="changeLanguage('nl')">NL</button>
+              <button @click="changeLanguage('en')" v-bind:class="language.current=='en'? 'current':''">EN</button>
+              <button @click="changeLanguage('fr')" v-bind:class="language.current=='fr'? 'current':''">FR</button>
+              <button @click="changeLanguage('nl')" v-bind:class="language.current=='nl'? 'current':''">NL</button>
             </div>
         </li>
       </ul>
@@ -64,6 +64,8 @@
 </template>
 
 <script>
+import { inject } from "vue";
+
 export default {
   data() {
     return {
@@ -72,10 +74,19 @@ export default {
       categories: [{name: "Squaring Up", route: "/paintings/squaring_up"}, {name: "Pins & Needles", route: "/paintings/pins_&_needles"}, {name: "Vibrations", route: "/paintings/vibrations"}, {name: "Staging Paintings", route: "/paintings/staging_paintings"}]
     };
   },
-  methods: {
-    changeLanguage(lang) {
-      console.log(`Language changed to: ${lang}`);
-    },
+  setup() {
+    const language = inject("language"); // Access the global language state
+
+    // Method to change the language
+    const changeLanguage = (lang) => {
+      language.current = lang; // Update the global language
+      console.log(language)
+    };
+
+    return {
+      language,
+      changeLanguage,
+    };
   },
 };
 </script>
@@ -186,7 +197,11 @@ header {
   border-bottom: 1px solid #ffffff;
   transition: color 0.3s, background-color 0.3s;
   font-family: 'GeosansLight', sans-serif;
-  font-weight: bolder;
+}
+
+.language-selector .current{
+  background-color: #ededed;
+  font-weight: bold;
 }
 
 .language-selector button:hover {
@@ -286,7 +301,7 @@ header .header-divider {
   .language-burger button {
     border: none;
     font-family: 'GeosansLight', sans-serif;
-    padding: 0.2rem 0.1rem;
+    padding: 0.3rem 0.1rem;
     min-width: 25px;
     background-color: #ffffff;
     border-bottom: 1px solid #ffffff;
@@ -294,8 +309,13 @@ header .header-divider {
   }
   .language-burger button:active {
     background-color: #ededed;
-    border-bottom: 1px solid #000000; }
+    border-bottom: 1px solid #000000; 
+  }
 
+  .language-burger .current {
+    background-color: #ededed;
+    font-weight: bold;
+  }
 }
 
 @media (max-width: 1800px) {

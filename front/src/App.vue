@@ -11,12 +11,19 @@
 <script>
 import Header from "@/components/Header.vue";
 import Footer from "@/components/Footer.vue";
+import { reactive, provide } from "vue";
 
 export default {
   components: {
     Header,
     Footer
-  }
+  },
+  setup() {
+    // Reactive global language state
+    const language = reactive({ current: "en" });
+    provide("language", language); // Provide the language globally
+    console.log(language)
+  },
 };
 </script>
 

@@ -61,6 +61,7 @@ footer .copyright {
   margin-top: .3rem;
   color: #333333;
   font-style: italic;
+  font-size: medium;
 }
 
   </style>
