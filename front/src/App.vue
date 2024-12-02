@@ -30,6 +30,7 @@ export default {
 
 body{
     font-family: 'GeosansLight', sans-serif;
+    font-size: 1.2rem;
     margin: 0 20%;
     background-color: #ededed;
 }
@@ -57,6 +58,7 @@ Footer {
 @media (max-width: 1200px) {
   body {
     margin: 0 15%;
+    font-size: 1rem;
   }
 
 }

@@ -54,14 +54,13 @@ footer .social-icons img:hover {
 
 footer .contact {
   margin: 0;
-  font-size: 0.9rem;
-  color: #333333;
+  color: #555555;
 }
 
 footer .copyright {
   margin-top: .3rem;
-  font-size: 0.8rem;
   color: #333333;
+  font-style: italic;
 }
 
   </style>
