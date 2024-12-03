@@ -1,0 +1,35 @@
+{
+    "fr": {
+        "header": {
+            "home": "Accueil",
+            "paintings": "Galerie",
+            "presentation": "Présentation",
+            "events": "Évènements",
+            "contact": "Contact"
+        },
+        "presentation": {},
+        "contact": {}
+    },
+    "en": {
+        "header": {
+            "home": "Home",
+            "paintings": "Paintings",
+            "presentation": "Presentation",
+            "events": "Events",
+            "contact": "Contact"
+        },
+        "presentation": {},
+        "contact": {}
+    },
+    "nl": {
+        "header": {
+            "home": "Home",
+            "paintings": "Galerij",
+            "presentation": "Presentatie",
+            "events": "Evenementen",
+            "contact": "Contact"
+        },
+        "presentation": {},
+        "contact": {}
+    }
+}

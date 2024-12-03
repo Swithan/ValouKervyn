@@ -11,50 +11,60 @@
       </div>
       <nav class="nav-menu">
         <ul class="menu">
-          <li><router-link to="/">Home</router-link></li>
+          <li><router-link to="/">{{translation.home}}</router-link></li>
           <li
             class="dropdown"
             @mouseover="showDropdown = true"
             @mouseleave="showDropdown = false"
           >
-            <router-link>Paintings</router-link>
+            <router-link>{{translation.paintings}}</router-link>
             <ul v-if="showDropdown" class="dropdown-menu">
               <li v-for="category in categories" v-bind:key="category">
                 <router-link :to="{path:category.route}">{{category.name}}</router-link>
               </li>              
             </ul>
           </li>
-          <li><router-link to="/presentation">Presentation</router-link></li>
-          <li><router-link to="/events">Events</router-link></li>
-          <li><router-link to="/contact">Contact</router-link></li>
+          <li><router-link to="/presentation">{{translation.presentation}}</router-link></li>
+          <li><router-link to="/events">{{translation.events}}</router-link></li>
+          <li><router-link to="/contact">{{translation.contact}}</router-link></li>
         </ul>
       </nav>
       <div class="language-selector">
-        <button @click="changeLanguage('en')" v-bind:class="language.current=='en'? 'current':''">EN</button>
-        <button @click="changeLanguage('fr')" v-bind:class="language.current=='fr'? 'current':''">FR</button>
-        <button @click="changeLanguage('nl')" v-bind:class="language.current=='nl'? 'current':''">NL</button>
+        <button
+          v-for="lang in ['en', 'fr', 'nl']"
+          :key="lang"
+          @click="changeLanguage(lang)"
+          :class="{ current: language.current === lang }"
+        >
+          {{ lang.toUpperCase() }}
+        </button>
       </div>
     </div>
       <nav class="nav-burger">
         <ul class="burger" v-if="burger">
-          <li><router-link to="/" @click="burger = !burger">Home</router-link></li>
+          <li><router-link to="/" @click="burger = !burger">{{translation.home}}</router-link></li>
           <li class="dropdown">
-            <router-link>Paintings</router-link>
+            <router-link>{{translation.paintings}}</router-link>
             <ul class="dropdown-burger">
               <li v-for="category in categories" v-bind:key="category">
                 <router-link :to="{path:category.route}" @click="burger = !burger">{{category.name}}</router-link>
               </li> 
             </ul>
           </li>
-          <li><router-link to="/presentation" @click="burger = !burger">Presentation</router-link></li>
-          <li><router-link to="/events" @click="burger = !burger">Events</router-link></li>
-          <li><router-link to="/contact" @click="burger = !burger">Contact</router-link></li>
+          <li><router-link to="/presentation" @click="burger = !burger">{{translation.presentation}}</router-link></li>
+          <li><router-link to="/events" @click="burger = !burger">{{translation.events}}</router-link></li>
+          <li><router-link to="/contact" @click="burger = !burger">{{translation.contact}}</router-link></li>
           <li>
             <div class="language-burger">
-              <button @click="changeLanguage('en')" v-bind:class="language.current=='en'? 'current':''">EN</button>
-              <button @click="changeLanguage('fr')" v-bind:class="language.current=='fr'? 'current':''">FR</button>
-              <button @click="changeLanguage('nl')" v-bind:class="language.current=='nl'? 'current':''">NL</button>
-            </div>
+        <button
+          v-for="lang in ['en', 'fr', 'nl']"
+          :key="lang"
+          @click="changeLanguage(lang)"
+          :class="{ current: language.current === lang }"
+        >
+          {{ lang.toUpperCase() }}
+        </button>
+      </div>
         </li>
       </ul>
     </nav>
@@ -63,28 +73,43 @@
   </header>
 </template>
 
+
 <script>
-import { inject } from "vue";
+import { inject, computed } from "vue";
+import translations from "../assets/translate.json";
 
 export default {
   data() {
     return {
       showDropdown: false,
       burger: false,
-      categories: [{name: "Squaring Up", route: "/paintings/squaring_up"}, {name: "Pins & Needles", route: "/paintings/pins_&_needles"}, {name: "Vibrations", route: "/paintings/vibrations"}, {name: "Staging Paintings", route: "/paintings/staging_paintings"}]
+      categories: [
+        { name: "Squaring Up", route: "/paintings/squaring_up" },
+        { name: "Pins & Needles", route: "/paintings/pins_&_needles" },
+        { name: "Vibrations", route: "/paintings/vibrations" },
+        { name: "Staging Paintings", route: "/paintings/staging_paintings" },
+      ],
     };
   },
   setup() {
-    const language = inject("language"); // Access the global language state
+    // Access global language state
+    const language = inject("language");
 
-    // Method to change the language
+    // Computed translation based on current language
+    const translation = computed(() => translations[language.current].header);
+    console.log(translation)
+    // Change language and update global state
     const changeLanguage = (lang) => {
-      language.current = lang; // Update the global language
-      console.log(language)
+      if (translations[lang]) {
+        language.current = lang;
+      } else {
+        console.warn(`Translation for language "${lang}" not found.`);
+      }
     };
 
     return {
       language,
+      translation,
       changeLanguage,
     };
   },
