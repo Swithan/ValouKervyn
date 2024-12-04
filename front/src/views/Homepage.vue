@@ -23,8 +23,9 @@ export default {
         const response = await fetch("http://localhost:5000/homepage");
         if (!response.ok) throw new Error("Failed to fetch image sources");
         const data = await response.json();
+
         // Extract image URLs from API response
-        this.imageSources = data.map((item) => item.himage);
+        data.length > 0 ? this.imageSources = data.map((item) => item.himage) : ["/src/assets/home1.jpg", "/src/assets/home2.jpg", "/src/assets/home3.jpg"];
         setTimeout(()=> {this.$emit("finish-loading");}, 1000)
         this.allImagesLoaded = true
          // Notify App.vue to hide loading screen
