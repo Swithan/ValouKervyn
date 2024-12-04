@@ -7,7 +7,14 @@
             "events": "Évènements",
             "contact": "Contact"
         },
-        "presentation": {},
+        "presentation": {
+            "title": "VK - Présentation",
+            "about": "A propos",
+            "work": "Artiste peintre belge",
+            "text1": "Née à Bruxelles le 21 juin 1973, Valou Kervyn découvre la passion pour le dessin et la peinture grâce à un atelier qu’elle suivait toutes les semaines depuis l’âge de 10 ans.\n\nAprès des humanités artistiques, elle choisit des études de graphisme à l’Ecole de Recherche Graphique (ERG) et Ecole du 75 (Bruxelles) suivi de cours du soir en illustration avec Alain Goffin.\n\nEn 2012, lors de la création d’un réseau de décoration d’intérieur qui regroupe artistes et artisans, elle retrouve ses premiers amours et avec bonheur le chemin de son atelier.\n\nDepuis lors, elle y passe ses journées...elles sont rythmées de couleurs, de matières, de mouvements, de recherches et d’amusements... \n\n\n",
+            "art": "Ma démarche artistique",
+            "text2": "Attirée par les couleurs, les formes et les textures... Curieuse de travailler avec des «objets» et des «matériaux» différents... \n\nLes couleurs sont superposées , l’acrylique est travaillée avec des palettes, des cartons, du fil de fer, du grillage… \n\nLes émotions sont aussi superposées… de nature expressive, jumelée à une forte sensibilité, je projette les sentiments du moment mélangés avec les émotions ressenties lors de la construction et l’organisation de la toile dans ma tête. \n\nJe travaille en deux temps, une toile se construit… d’abord j’imagine, je rêve et puis au fil du temps je la vois, elle se réalise, elle doit sortir… \n\nAlors, je m’emballe, je regroupe le matériel et j’attaque... Ce moment là est comme suspendu... \n\nC’est magique quand les idées, les ressentis deviennent matière, quand il faut rajouter du sable dans la peinture pour accentuer le mouvement, quand les palettes, les cartons remplis de couleurs transcrivent en toute liberté ce qui a été imaginé. \n\nParfois c’est explosif, parfois plus posé .... les techniques varient en fonction de mes émotions, par contre toujours en couleur…"
+        },
         "contact": {}
     },
     "en": {
@@ -18,7 +25,14 @@
             "events": "Events",
             "contact": "Contact"
         },
-        "presentation": {},
+        "presentation": {
+            "title": "VK - Presentation",
+            "about": "About",
+            "work": "Belgian artist and painter",
+            "text1": "Born in Brussels on June 21st, 1973, Valou Kervyn discovers her passion for drawing and painting at a weekly workshop she first attended when she was 10.\n\nAfter her Arts degree, she chose to study graphic design at the Ecole de Recherche Graphique (ERG) and the Ecole 75 in Brussels, as well as illustration at night school with Alain Goffin.\n\nIn 2012, when a network of Interior Designers was created to regroup artists and craftsmen, she went back to her first love of art and happily opened her own workshop.\n\nShe has been working there ever since, with her days full of colour, material, movement, research and joy …\n\n\n",
+            "art": "My artistic approach",
+            "text2": "Attracted to colours, shapes and textures, I am always curious about working with different «objects» and «materials» ... \n\nI love layered colours, working the acrylic with spatulas, cardboard, metal wire and mesh…\n\nEmotions also overlap… I have an expressive nature with strong sensivity which means I mentally project my feelings and the energies around me onto the construction and organisation of the painting…\n\nI work in two phases when constructing my paintings. Initially, I imagine and dream and in time, I see it, visualize it and it must come out… Then, I regroup, set up all the material and get to work…\n\nThis is a magical moment when I am suspended in time, when ideas and feelings merge and become form, where sand must be added to accentuate movement, where palettes and cardboard full of colours help me freely transcribe what I had imagined…\n\nAt times, the result is explosive and at others, more serene…\n\nThe techniques I use depend on my emotions, but there is always an abundance of colour in all of my work…"
+        },
         "contact": {}
     },
     "nl": {
@@ -29,7 +43,15 @@
             "events": "Evenementen",
             "contact": "Contact"
         },
-        "presentation": {},
+        "presentation": {
+            "title": "VK - Presentatie",
+        "about": "Over mij",
+        "work": "Belgische kunstschilder",
+        "text1": "Valou Kervyn, geboren in Brussel op 21 juni 1973, ontdekte de passie voor tekenen en schilderen in een atelier waar ze sinds haar tiende wekelijks ging tekenen en schilderen.\n\nNa kunsthumaniora koos ze voor grafische ontwerpstudies aan de ERG (Ecole de Recherche Graphique) en aan Ecole du 75 (Brussel), gevolgd door avondcursussen illustratie met Alain Goffin.\n\nIn 2012, met de oprichting van een netwerk voor interieurdecoratie met kunstenaars en ambachtslui, herontdekte ze haar eerste liefde en vond ze haar weg naar haar atelier.\n\nSindsdien brengt ze haar dagen door in haar atelier ... Dagen die omringd zijn door kleuren, materialen, bewegingen, onderzoek en plezier ...\n\n\n",
+        "art": "Mijn artistieke benadering",
+        "text2": "Ik ben aangetrokken door kleuren, vormen en texturen en nieuwsgierig om te werken met verschillende voorwerpen en materialen ...\n\nDe kleuren worden dikwijls over elkaar geschilderd, de acrylverf wordt aangebracht met paletmes, karton, draad, gaas ...\n\nDe emoties worden ook door elkaar gemengd... Ik ben expressief, uiterst gevoelig en projecteer de gevoelens van het moment, vermengd met de gevoelde emoties tijdens het uitwerken van het canvas, in mijn hoofd.\n\nMijn canvas komt tot stand in twee fasen: ik geef mijn verbeelding de vrije loop, ik droom en na verloop van tijd krijgt het idee vorm, ik krijg een duidelijk en concreet beeld in mijn hoofd.\n\nVervolgens laat ik me meeslepen, ik verzamel het materiaal en ga aan de slag…  alsof de tijd hier stilstaat.\n\nHet is magisch wanneer ideeën en gevoelens materie worden, wanneer je zand aan de verf toevoegt om de beweging te accentueren, wanneer de met kleuren gevulde paletmessen en kartons mijn idee tot stand brengen.\n\nSoms is het explosief, soms gematigder... De technieken variëren naargelang mijn emoties, maar altijd met kleuren!"
+    
+        },
         "contact": {}
     }
 }
