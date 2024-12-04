@@ -112,6 +112,7 @@ main {
   flex: 1; /* Ensures the main content takes the remaining space */
   padding: 1rem;
   background-color: #ffffff;
+  display: flex;
 }
 Header {
   position: sticky;

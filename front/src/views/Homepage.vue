@@ -30,7 +30,7 @@ export default {
          // Notify App.vue to hide loading screen
       } catch (error) {
         console.error("Error fetching images:", error);
-      } finally {
+        setTimeout(()=> {this.$emit("finish-loading");}, 1000)
       }
     },
     

@@ -31,3 +31,9 @@ CREATE TABLE events (
     eDescription VARCHAR(255),
     eImage VARCHAR(100)
 );
+
+
+INSERT INTO homepage VALUES 
+(1, '/src/assets/home1.jpg'), 
+(2, '/src/assets/home2.jpg'), 
+(3, '/src/assets/home3.jpg')
