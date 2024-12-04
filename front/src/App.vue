@@ -8,7 +8,7 @@
       </div>
 
       <!-- Keep router-view alive so events can propagate -->
-      <router-view
+      <router-view class="content"
         @start-loading="startLoading"
         @finish-loading="finishLoading"
       />
@@ -65,6 +65,10 @@ body{
     font-size: 1.2rem;
     margin: 0 20%;
     background-color: #ededed;
+}
+
+.content {
+  z-index: 0;
 }
 
 .loading-screen {

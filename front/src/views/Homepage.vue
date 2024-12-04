@@ -1,13 +1,14 @@
 <template>
-  <div v-if="allImagesLoaded">
-    <div v-for="(src, index) in imageSources" :key="index">
-      <img :src="src" :alt="'Image ' + index" />
-    </div>
-  </div>
+    <Carousel class="home" :images="imageSources" />
 </template>
 
 <script>
+import Carousel from "../components/Carousel.vue";
+
 export default {
+  components: {
+    Carousel,
+  },
   data() {
     return {
       imageSources: [], // Array of image URLs from the API
@@ -19,18 +20,17 @@ export default {
       this.$emit("start-loading"); // Notify App.vue to show loading screen
       try {
         // Example API call to fetch image URLs
-        const response = await fetch("https://jsonplaceholder.typicode.com/photos?_limit=5");
+        const response = await fetch("http://localhost:5000/homepage");
         if (!response.ok) throw new Error("Failed to fetch image sources");
         const data = await response.json();
-        console.log(data)
         // Extract image URLs from API response
-        this.imageSources = data.map((item) => console.log(item.thumbnailUrl));
-        setTimeout(()=> {}, 1000)
+        this.imageSources = data.map((item) => item.himage);
+        setTimeout(()=> {this.$emit("finish-loading");}, 1000)
         this.allImagesLoaded = true
+         // Notify App.vue to hide loading screen
       } catch (error) {
         console.error("Error fetching images:", error);
       } finally {
-        this.$emit("finish-loading"); // Notify App.vue to hide loading screen
       }
     },
     
@@ -40,3 +40,9 @@ export default {
   },
 };
 </script>
+
+<style>
+.home {
+  height: 100%;
+}
+</style>

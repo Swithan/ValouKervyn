@@ -121,7 +121,7 @@ export default {
 header {
   padding: 1rem 1rem 0;
   background-color: #ffffff;
-
+  z-index: 5;
 }
 
 .site-header {
