@@ -83,12 +83,8 @@ export default {
     return {
       showDropdown: false,
       burger: false,
-      categories: [
-        { name: "Squaring Up", route: "/paintings/squaring_up" },
-        { name: "Pins & Needles", route: "/paintings/pins_&_needles" },
-        { name: "Vibrations", route: "/paintings/vibrations" },
-        { name: "Staging Paintings", route: "/paintings/staging_paintings" },
-      ],
+      categories: [],
+
     };
   },
   setup() {
@@ -111,6 +107,37 @@ export default {
       translation,
       changeLanguage,
     };
+  },
+  methods: {
+    async fetchCategories() {
+      this.$emit("start-loading"); // Notify App.vue to show loading screen
+      try {
+        // Example API call to fetch image URLs
+        const response = await fetch("http://localhost:5000/categories");
+        if (!response.ok) throw new Error("Failed to fetch categories");
+        const data = await response.json();
+
+        // Extract image URLs from API response
+        if (data.length > 0) {
+          this.categories = data.map((item) => {return {name: item.cname, route: "/paintings/"+item.cname.toLowerCase().replace(/ /g, "_")}});
+        } else {
+          this.categories = [
+            { name: "Squaring Up", route: "/paintings/squaring_up" },
+            { name: "Pins & Needles", route: "/paintings/pins_&_needles" },
+            { name: "Vibrations", route: "/paintings/vibrations" },
+            { name: "Staging Paintings", route: "/paintings/staging_paintings" },
+          ];
+        }
+        
+        this.$emit("finish-loading");
+         // Notify App.vue to hide loading screen
+      } catch (error) {
+        this.$emit("finish-loading");
+      }
+    },
+  },
+  mounted() {
+    this.fetchCategories(); // Fetch image sources when component is mounted
   },
 };
 </script>

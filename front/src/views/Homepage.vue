@@ -26,12 +26,12 @@ export default {
 
         // Extract image URLs from API response
         data.length > 0 ? this.imageSources = data.map((item) => item.himage) : ["/src/assets/home1.jpg", "/src/assets/home2.jpg", "/src/assets/home3.jpg"];
-        setTimeout(()=> {this.$emit("finish-loading");}, 1000)
+        this.$emit("finish-loading");
         this.allImagesLoaded = true
          // Notify App.vue to hide loading screen
       } catch (error) {
         console.error("Error fetching images:", error);
-        setTimeout(()=> {this.$emit("finish-loading");}, 1000)
+        this.$emit("finish-loading");
       }
     },
     
