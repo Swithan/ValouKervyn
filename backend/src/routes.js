@@ -82,4 +82,51 @@ router.get('/events', async (req, res) => {
   }
 });
 
+// Route for contact event
+router.get('/contact', async (req, res) => {
+  try {
+    const result = await pool.query(`
+        WITH ongoing_event AS (
+            SELECT 
+                eid, ename, ebegin, eend, eplace, edescription, eimage
+            FROM 
+                events
+            WHERE 
+                CURRENT_DATE BETWEEN ebegin AND eend
+            LIMIT 1
+        ), next_event AS (
+            SELECT 
+                eid, ename, ebegin, eend, eplace, edescription, eimage
+            FROM 
+                events
+            WHERE 
+                ebegin > CURRENT_DATE
+            ORDER BY 
+                ebegin
+            LIMIT 1
+        ), last_event AS (
+            SELECT 
+                eid, ename, ebegin, eend, eplace, edescription, eimage
+            FROM 
+                events
+            WHERE 
+                eend < CURRENT_DATE
+            ORDER BY 
+                eend DESC
+            LIMIT 1
+        )
+        SELECT * FROM ongoing_event
+        UNION ALL
+        SELECT * FROM next_event
+        WHERE NOT EXISTS (SELECT 1 FROM ongoing_event)
+        UNION ALL
+        SELECT * FROM last_event
+        WHERE NOT EXISTS (SELECT 1 FROM ongoing_event) AND NOT EXISTS (SELECT 1 FROM next_event);
+      `);
+    res.json(result.rows);
+  } catch (err) {
+    res.status(500).send(err.message);
+  }
+});
+
 module.exports = router;

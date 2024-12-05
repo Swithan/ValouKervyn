@@ -64,6 +64,7 @@ INSERT INTO images VALUES
 (12, 4, '/src/assets/painting12.jpg', FALSE);
 
 INSERT INTO events VALUES 
-(1, 'Exposition 1', '2021-01-01', '2021-01-31', 'Galerie 1', 'Exposition 1', '/src/assets/aaf.jpg'), 
-(2, 'Exposition 2', '2021-02-01', '2021-02-28', 'Galerie 2', 'Exposition 2', '/src/assets/home1.jpg'), 
-(3, 'Exposition 3', '2021-03-01', '2021-03-31', 'Galerie 3', 'Exposition 3', '/src/assets/event3.jpg');
+(1, 'Affordable Art Fair 2023', '2023-02-08', '2023-02-12', 'Tour & Taxi', 'Stand 12', '/src/assets/aaf.jpg'), 
+(2, 'Noël 2024', '2024-11-20', '2024-11-24', 'Rue des Garennes 90, 1170 Watermael-Boitsfort', 'Noël approche ! Venez découvrir 42 exposants du 20 au 24 novembre 2024 à Boitsfort.', '/src/assets/noel2024.jpg'),
+(3, 'Art Brussels 2025', '2025-04-25', '2025-04-27', 'Tour & Taxi', 'Stand 12', '/src/assets/ab2025.jpg');
+
