@@ -40,7 +40,7 @@ export default {
     max-width: 250px;
     height: auto;
     border-radius: 10px;
-    margin: 0 1rem 0 0;
+    margin: 0 1rem 0 1rem;
 }
 
 /* Font styles */
