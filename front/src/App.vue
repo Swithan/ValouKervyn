@@ -63,7 +63,7 @@ export default {
 body{
     font-family: 'GeosansLight', sans-serif;
     font-size: 1.2rem;
-    margin: 0 20%;
+    margin: 0 25%;
     background-color: #ededed;
 }
 
@@ -113,6 +113,7 @@ main {
   padding: 1rem;
   background-color: #ffffff;
   display: flex;
+  align-items: center;
 }
 Header {
   position: sticky;
@@ -122,6 +123,14 @@ Header {
 Footer {
   position: sticky;
   bottom: 0;
+}
+
+@media (max-width: 2000px) {
+  body {
+    margin: 0 20%;
+    font-size: 1rem;
+  }
+
 }
 
 @media (max-width: 1200px) {
