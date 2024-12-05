@@ -97,7 +97,6 @@ export default {
 
     // Computed translation based on current language
     const translation = computed(() => translations[language.current].header);
-    console.log(translation)
     // Change language and update global state
     const changeLanguage = (lang) => {
       if (translations[lang]) {
@@ -135,7 +134,7 @@ header {
   max-height: 150px;
 }
 
-.burger-btn {
+.burger-btn, .burger {
   display: none;
 }
 
@@ -289,6 +288,7 @@ header .header-divider {
   }
 
   .burger {
+    display: block;
     margin: 0;
     padding: 0.5rem;
     transform-origin: top;
