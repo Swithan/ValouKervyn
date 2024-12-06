@@ -88,7 +88,7 @@ router.get('/contact', async (req, res) => {
     const result = await pool.query(`
         WITH ongoing_event AS (
             SELECT 
-                eid, ename, ebegin, eend, eplace, edescription, eimage
+                eid, ename, TO_CHAR(ebegin, 'DD/MM/YYYY') AS ebegin, TO_CHAR(eend, 'DD/MM/YYYY') AS eend, eplace, edescription, eimage
             FROM 
                 events
             WHERE 
@@ -96,7 +96,7 @@ router.get('/contact', async (req, res) => {
             LIMIT 1
         ), next_event AS (
             SELECT 
-                eid, ename, ebegin, eend, eplace, edescription, eimage
+                eid, ename, TO_CHAR(ebegin, 'DD/MM/YYYY') AS ebegin, TO_CHAR(eend, 'DD/MM/YYYY') AS eend, eplace, edescription, eimage
             FROM 
                 events
             WHERE 
@@ -106,7 +106,7 @@ router.get('/contact', async (req, res) => {
             LIMIT 1
         ), last_event AS (
             SELECT 
-                eid, ename, ebegin, eend, eplace, edescription, eimage
+                eid, ename, TO_CHAR(ebegin, 'DD/MM/YYYY') AS ebegin, TO_CHAR(eend, 'DD/MM/YYYY') AS eend, eplace, edescription, eimage
             FROM 
                 events
             WHERE 
@@ -125,6 +125,7 @@ router.get('/contact', async (req, res) => {
       `);
     res.json(result.rows);
   } catch (err) {
+    console.log(err);
     res.status(500).send(err.message);
   }
 });

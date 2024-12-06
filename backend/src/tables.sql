@@ -38,10 +38,10 @@ INSERT INTO homepage VALUES
 (3, '/src/assets/home3.jpg');
 
 INSERT INTO categories VALUES 
-(1, 'squaring_up'), 
-(2, 'pins_&_needles'), 
-(3, 'vibrations'), 
-(4, 'staging_paintings');
+(1, 'Squaring Up'), 
+(2, 'Pins & Needles'), 
+(3, 'Vibrations'), 
+(4, 'Staging Paintings');
 
 INSERT INTO paintings VALUES 
 (1, 'Acrylique sur toile', 2, '200x160'), 
